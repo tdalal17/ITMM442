@@ -4,12 +4,15 @@ const typeDefs = gql`
   type Query {
     posts: [Post!]!
     users: [User!]!
+    post(id: ID!): Post
   }
 
   type Mutation {
-    createPost(title: String!, content: String!, published: Boolean!, userId: Int!): Post
+    createPost(title: String!, content: String!, published: Boolean!, userId: ID!): Post
+    updatePost(id: ID!, title: String, content: String, published: Boolean): Post
+    deletePost(id: ID!): Post
   }
-
+  
   type Post {
     id: ID!
     title: String!
